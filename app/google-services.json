@@ -21,7 +21,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa3fsJ3TSIPwrGVXODn3GS5nQrpQDa7Go"
+          "current_key": "@string/google_maps_key"
         }
       ],
       "services": {
