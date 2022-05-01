@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.HomeFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_home">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        tools:ignore="UselessParent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_regular"
+            android:paddingEnd="@dimen/margin_regular">
+
+            <TextView
+                android:id="@+id/home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:layout_marginBottom="@dimen/margin_regular"
+                app:layout_constraintBottom_toTopOf="@+id/home_explore_title"
+                android:text="@string/home_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_big"/>
+
+            <ImageView
+                android:id="@+id/home_image"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                app:layout_constraintStart_toEndOf="@+id/home_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/home_title"
+                android:contentDescription="@string/home_camp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_home"/>
+
+            <TextView
+                android:id="@+id/home_explore_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_title"
+                android:layout_marginTop="@dimen/margin_regular"
+
+                android:text="@string/home_explore_title"
+                android:textColor="@color/main_red"
+                android:textSize="@dimen/text_medium"/>
+
+            <com.asksira.loopingviewpager.LoopingViewPager
+                android:id="@+id/home_explore_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_explore_title"
+                android:layout_marginTop="@dimen/margin_small"
+                app:layout_constraintBottom_toTopOf="@+id/home_explore_seemore"
+                android:layout_marginBottom="@dimen/margin_small"
+                app:isInfinite="true"
+                app:autoScroll="true"
+                app:scrollInterval="5000"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"
+                android:clipToPadding="false"/>
+
+            <TextView
+                android:id="@+id/home_explore_seemore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/home_search_section"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingBottom="@dimen/padding_medium"
+                android:textAlignment="center"
+                android:text="@string/home_explore_seemore"
+                android:background="@drawable/ripple_explore_more"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <RelativeLayout
+                android:id="@+id/home_search_section"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/margin_regular">
+
+                <View
+                    android:id="@+id/home_search_center_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_centerInParent="true"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/home_others_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/home_search_center_view"
+                    android:background="@drawable/ripple_search_map"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/home_explore_map_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:paddingStart="@dimen/padding_small"
+                        android:paddingTop="@dimen/padding_small"
+                        android:paddingEnd="@dimen/padding_small"
+
+                        android:text="@string/home_explore_map"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/home_explore_map_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/home_camp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_map"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/home_explore_map_text" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/home_search_center_view"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_search_friends_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_small"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        android:background="@drawable/ripple_search_friends"
+                        android:clickable="true"
+                        android:focusable="true">
+
+
+                        <TextView
+                            android:id="@+id/home_search_friends_text"
+                            android:layout_width="89dp"
+                            android:layout_height="86dp"
+                            android:layout_marginStart="8dp"
+                            android:padding="@dimen/padding_small"
+                            android:text="@string/home_search_friends"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/home_search_friends_icon" />
+
+                        <ImageView
+                            android:id="@+id/home_search_friends_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/home_search_friends_text"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_margin="@dimen/margin_small"
+                            android:contentDescription="@string/home_camp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_person"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_search_route_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:background="@drawable/ripple_search_routes"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:id="@+id/home_search_route_text"
+                            android:layout_width="123dp"
+                            android:layout_height="58dp"
+                            android:padding="@dimen/padding_small"
+                            android:text="@string/home_search_routes"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/home_search_route_icon" />
+
+                        <ImageView
+                            android:id="@+id/home_search_route_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/home_search_route_text"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_margin="@dimen/margin_small"
+                            android:contentDescription="@string/home_camp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_map"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView><![CDATA[
+
+    />
+
+]]>
+</FrameLayout>

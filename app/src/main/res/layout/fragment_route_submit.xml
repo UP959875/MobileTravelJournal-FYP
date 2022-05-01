@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RouteSubmitFragment"
+    android:background="#000000"
+    android:clickable="true"
+    android:id="@+id/fragment_route_submit">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="@dimen/padding_regular">
+        <!--<TextView
+            android:id="@+id/route_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:layout_marginBottom="@dimen/margin_regular"
+            android:text="@string/home_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_big"/>-->
+
+
+        <!--<ListView
+            android:id="@+id/lv_waypoints"
+            android:layout_width="409dp"
+            android:layout_height="729dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+
+
+
+        </ListView>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/route_submit_picture_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_settings_personal_separator"
+        android:paddingHorizontal="@dimen/padding_smaller"
+        android:paddingVertical="@dimen/padding_small"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/route_submit_picture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/text_big"
+            android:text="@string/profile_settings_personal_picture_title"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_smaller"
+            android:text="@string/route_submit_picture_desc"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintEnd_toStartOf="@+id/route_submit_picture_selection"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/route_submit_picture_title" />
+
+        <ImageView
+            android:id="@+id/route_submit_picture_selection"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/notif_badge_square"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/route_submit_picture_seperator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/route_submit_picture_section"
+        android:layout_marginBottom="@dimen/margin_smaller"
+        android:layout_centerVertical="true"
+        android:background="@color/gray"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/route_submit_title_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/route_submit_picture_seperator"
+        android:paddingHorizontal="@dimen/padding_smaller"
+        android:paddingVertical="@dimen/padding_small"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/route_submit_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/text_big"
+            android:text="@string/route_submit_title_text"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/route_submit_title_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/route_submit_title_text"
+            android:textSize="@dimen/text_small"
+            android:text="@string/route_submit_title_desc"
+            android:textColor="@color/white"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/route_submit_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/route_submit_title_desc"
+            android:layout_marginTop="@dimen/margin_small"
+            style="@style/TextInput"
+            app:hintEnabled="false"
+            app:errorEnabled="false"
+            app:errorIconDrawable="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/route_submit_title_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/l_gray"
+                android:inputType="text"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_small" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <View
+           android:id="@+id/route_submit_title_seperator"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/route_submit_title_section"
+           android:layout_marginBottom="@dimen/margin_smaller"
+           android:layout_centerVertical="true"
+           android:background="@color/gray"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/route_submit_desc_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/route_submit_title_seperator"
+        android:paddingHorizontal="@dimen/padding_smaller"
+        android:paddingVertical="@dimen/padding_small"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/route_submit_desc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/text_big"
+            android:text="@string/route_submit_desc_text"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/route_submit_desc_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/route_submit_desc_text"
+            android:textSize="@dimen/text_small"
+            android:text="@string/route_submit_desc_desc"
+            android:textColor="@color/white"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/route_submit_desc_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/route_submit_desc_desc"
+            android:layout_marginTop="@dimen/margin_small"
+            style="@style/TextInput"
+            app:hintEnabled="false"
+            app:errorEnabled="false"
+            app:errorIconDrawable="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/route_submit_desc_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/l_gray"
+                android:inputType="text"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_small" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <com.google.android.material.button.MaterialButton
+           android:id="@+id/route_submit_save_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="80dp"
+           android:backgroundTint="@color/main_green"
+           android:text="@string/route_submit_button_submit"
+           android:textColor="@color/black"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.498"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/route_submit_desc_section" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>

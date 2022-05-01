@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="user"
+            type="com.up959875.mobiletraveljournal.models.User"/>
+        <variable
+            name="loggedInUser"
+            type="com.up959875.mobiletraveljournal.models.User"/>
+        <variable
+            name="location"
+            type="String"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ProfileFragment"
+        android:id="@+id/fragment_profile"
+        android:background="@color/black">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        tools:ignore="UselessParent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/profile_background"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/gray"/>
+
+            <ImageView
+                android:id="@+id/profile_arrow_button"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:background="?android:attr/selectableItemBackground"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:visibility="@{!user.isUserProfile(loggedInUser) ? View.VISIBLE : View.GONE}"
+                android:src="@drawable/ic_back_arrow"/>
+
+
+            <ImageView
+                android:id="@+id/profile_notifications"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:background="?android:attr/selectableItemBackground"
+                android:visibility="@{user.isUserProfile(loggedInUser) ? View.VISIBLE : View.GONE}"
+                android:contentDescription="@string/profile_notifications"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_notif"/>
+
+            <TextView
+                android:id="@+id/profile_notifications_badge"
+                android:layout_width="@dimen/badge_size"
+                android:layout_height="@dimen/badge_size"
+                app:layout_constraintEnd_toEndOf="@id/profile_notifications"
+                app:layout_constraintTop_toTopOf="@id/profile_notifications"
+                android:visibility="@{user.isUserProfile(loggedInUser) &amp;&amp; user.hasNotifications()? View.VISIBLE : View.GONE}"
+                android:padding="@dimen/padding_small"
+                android:gravity="center"
+                android:background="@drawable/notif_badge"/>
+
+            <ImageView
+                android:id="@+id/profile_edit"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/profile_notifications"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/profile_edit"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_edit" />
+
+            <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+                android:id="@+id/profile_user_details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/ms9_DefaultShadowStyle"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profile_user_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="275dp"
+                    android:layout_marginStart="@dimen/margin_regular"
+                    android:layout_marginEnd="@dimen/margin_regular"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/red_active">
+
+                    <TextView
+                        android:id="@+id/profile_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@+id/profile_user_details"
+                        app:layout_constraintEnd_toEndOf="@id/profile_user_details"
+                        app:layout_constraintTop_toTopOf="@id/profile_user_details"
+                        android:layout_marginTop="@dimen/margin_bigger"
+                        android:text="@{user.username}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium"/>
+
+                    <TextView
+                        android:id="@+id/profile_bio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@{user.bio}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="@{user.bio == null ? View.GONE : View.VISIBLE}"
+                        app:layout_constraintEnd_toEndOf="@id/profile_user_details"
+                        app:layout_constraintStart_toStartOf="@+id/profile_user_details"
+                        app:layout_constraintTop_toBottomOf="@id/profile_username" />
+
+                    <TextView
+                        android:id="@+id/profile_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_location"
+                        android:gravity="center"
+                        android:text="@{location}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="@{user.isLocationAvailableForUser(loggedInUser) &amp;&amp; location != null ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="@id/profile_user_details"
+                        app:layout_constraintStart_toStartOf="@+id/profile_user_details"
+                        app:layout_constraintTop_toBottomOf="@id/profile_bio" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/profile_contact"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+
+                            android:drawableTop="@drawable/ic_lock"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:padding="@dimen/padding_small"
+                            android:text="@string/profile_contact"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_smaller"
+                            app:backgroundTint="@color/red_active"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/profile_route"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:drawableTop="@drawable/ic_map"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:padding="@dimen/padding_small"
+                            android:text="@string/profile_routes"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_smaller"
+                            app:backgroundTint="@color/red_active"
+                            app:cornerRadius="0dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/profile_friends"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:drawableTop="@drawable/ic_people"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:padding="@dimen/padding_small"
+                            android:text="@string/profile_friends"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_smaller"
+                            app:backgroundTint="@color/red_active"
+                            app:cornerRadius="0dp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/profile_image"
+                app:imageUrl="@{user.photo}"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="1dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="@color/gray"
+                app:civ_shadow_radius="10"
+                app:layout_constraintEnd_toEndOf="@+id/profile_user_details_container"
+                app:layout_constraintStart_toStartOf="@+id/profile_user_details_container"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.greenfrvr.hashtagview.HashtagView
+                android:id="@+id/profile_preferences"
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginEnd="@dimen/margin_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_user_details_container"
+                app:tagTextGravity="center"
+                app:tagMargin="@dimen/margin_smaller"
+                app:rowMargin="@dimen/margin_smaller"
+                app:tagPaddingBottom="@dimen/padding_tiny"
+                app:tagPaddingLeft="@dimen/padding_tiny"
+                app:tagPaddingTop="@dimen/padding_tiny"
+                app:tagPaddingRight="@dimen/padding_tiny"
+                app:tagBackground="@drawable/oval_background_hashtag"
+                app:tagForeground="?android:attr/selectableItemBackground"
+                app:tagTextSize="@dimen/text_small"
+                app:tagTextColor="@color/white"
+                android:visibility="@{user.isPreferencesAvailableForUser(loggedInUser) ? View.VISIBLE : View.GONE}"/>
+
+            <TextView
+                android:id="@+id/profile_see_all_preferences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/profile_see_all_prefs"
+                android:textColor="@color/white"
+
+                android:textSize="@dimen/text_regular"
+                android:visibility="@{user.isPreferencesAvailableForUser(loggedInUser) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_preferences" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_see_all_preferences"
+                app:layout_constraintBottom_toTopOf="@+id/profile_settings_button"
+                android:visibility="@{user.prefs == null ? View.GONE : View.VISIBLE}"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/profile_settings_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/profile_sign_out_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="@{user.isUserProfile(loggedInUser) ? View.VISIBLE : View.GONE}"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:padding="@dimen/padding_small"
+                android:text="@string/profile_settings"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/main_green" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/profile_sign_out_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="@{user.isUserProfile(loggedInUser) ? View.VISIBLE : View.GONE}"
+                android:layout_marginBottom="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:padding="@dimen/padding_small"
+                android:text="@string/profile_signout"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/main_green" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/profile_progressbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="invisible">
+        <com.victor.loading.rotate.RotateLoading
+            android:id="@+id/profile_progressbar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:loading_width="4dp"
+            app:loading_color="@color/white"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+</FrameLayout>
+
+
+</layout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_regular">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_display"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/user_display_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/white"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10"
+            app:civ_shadow_color="@color/gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/margin_small"
+            android:adjustViewBounds="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_display_image"
+            android:layout_margin="@dimen/margin_small"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_display_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_regular"
+                android:textColor="@color/black"
+
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/user_display_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/margin_small"
+                android:textSize="@dimen/text_smaller"
+                android:textColor="@color/gray"
+
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/user_item_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/notif_remove"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_remove"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

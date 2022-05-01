@@ -1,0 +1,4 @@
+rootProject.name='Mobile Travel Journal'
+include ':app'
+
+

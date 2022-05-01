@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notif_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/notif_item_user_image"
+            android:layout_width="119dp"
+            android:layout_height="106dp"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_marginStart="16dp"
+            android:adjustViewBounds="true"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="1dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/l_gray"
+            app:civ_shadow_radius="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.131" />
+
+        <LinearLayout
+            android:id="@+id/notif_item_texts_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_smaller"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/notif_item_user_image"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/notif_item_user_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/notif_item_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_smaller" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notif_item_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_small"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintBottom_toBottomOf="@+id/notif_item_accept_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/notif_item_accept_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notif_item_accept_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:layout_width="59dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:text="@string/notif_yes"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_smaller"
+            app:backgroundTint="@android:color/holo_orange_dark"
+            app:layout_constraintEnd_toStartOf="@+id/notif_item_discard_button"
+            app:layout_constraintTop_toBottomOf="@+id/notif_item_texts_layout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notif_item_discard_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:layout_width="55dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_weight="1"
+            android:text="@string/notif_no"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_smaller"
+            app:backgroundTint="@android:color/holo_orange_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notif_item_texts_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

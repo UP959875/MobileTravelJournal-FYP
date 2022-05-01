@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1041764244766",
+    "project_id": "mobiletraveljournalfyp",
+    "storage_bucket": "mobiletraveljournalfyp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041764244766:android:5295a877e76af391d53d0f",
+        "android_client_info": {
+          "package_name": "com.up959875.mobiletraveljournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041764244766-385gh2mpf7mbdqvv15fevv74jdie8r5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALg5W8ExJJrQxQKbCRewppzbHQqQ3sRaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041764244766-385gh2mpf7mbdqvv15fevv74jdie8r5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
