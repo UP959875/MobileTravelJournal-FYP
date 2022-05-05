@@ -15,11 +15,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 
 
+//Handles getting user data, and a list of users.
 public class UserRepo {
 
     private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = rootRef.collection(Constants.USERS);
 
+    /**
+     * "Get a user's data from the database and return it as a MutableLiveData object."
+     * 
+     * The function takes a user's uid as a parameter and returns a MutableLiveData object
+     * 
+     * @param uid The user's unique ID.
+     * @return A MutableLiveData object that contains a User object.
+     */
     public MutableLiveData<User> getUserData(String uid) {
         MutableLiveData<User> userData = new MutableLiveData<>();
         DocumentReference userReference = usersRef.document(uid);
@@ -35,6 +44,12 @@ public class UserRepo {
         return userData;
     }
 
+    /**
+     * It takes a list of user ids, and returns a list of users
+     * 
+     * @param usersIds List of user ids
+     * @return A list of users.
+     */
     public MutableLiveData<List<User>> getUsers(List<String> usersIds) {
         Log.d("l39 getusers", usersIds.toString());
         MutableLiveData<List<User>> usersData = new MutableLiveData<>();
@@ -54,6 +69,13 @@ public class UserRepo {
         return usersData;
     }
 
+    /**
+     * This function takes a user object and a map of key-value pairs and updates the user's document
+     * in the database with the key-value pairs in the map
+     * 
+     * @param user The user object that you want to update.
+     * @param map A map of the fields to update.
+     */
     public void updateUser(User user, Map<String, Object> map) {
         DocumentReference userReference = usersRef.document(user.getUid());
         userReference.update(map);

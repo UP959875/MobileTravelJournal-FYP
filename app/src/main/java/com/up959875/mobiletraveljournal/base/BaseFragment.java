@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.up959875.mobiletraveljournal.interfaces.NavigationListener;
 
+//BaseFragment Class, which other fragments extend from. Used to add extra functionality to each fragment, and extends of the default fragment.
 public class BaseFragment extends Fragment{
 
     private NavigationListener navigationListener;

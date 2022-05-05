@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.up959875.mobiletraveljournal.R;
 
+//Home screen fragment, which places buttons to change fragments to others, depending on what they click. The first page when starting up the app.
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private FragmentHomeBinding binding;
     public static HomeFragment newInstance() {

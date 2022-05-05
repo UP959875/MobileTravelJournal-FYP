@@ -9,6 +9,7 @@ import com.up959875.mobiletraveljournal.models.User;
 import com.up959875.mobiletraveljournal.repository.AuthRepo;
 
 
+//Has getters and setters for the data associated with the authentication, and sends data to the AuthRepo to get info back.
 public class AuthViewModel extends AndroidViewModel {
 
     private AuthRepo authRepo;

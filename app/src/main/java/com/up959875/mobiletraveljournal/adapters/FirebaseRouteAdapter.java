@@ -22,13 +22,15 @@ import com.up959875.mobiletraveljournal.other.Privacy;
 import java.util.List;
 import java.util.Objects;
 
-
+//Function to help display the route data from the Firebase Database.
 public class FirebaseRouteAdapter extends FirestorePagingAdapter<Route, FirebaseRouteAdapter.UserViewHolder>{
 
     private OnItemClick onItemClick;
     private Context context;
     private List<Route> routes;
 
+
+    //Constructor for the class
     public FirebaseRouteAdapter(FirestorePagingOptions<Route> options, Context context) {
 
         super(options);
@@ -37,16 +39,25 @@ public class FirebaseRouteAdapter extends FirestorePagingAdapter<Route, Firebase
 
 
     @NonNull
-
+    //Called to create a view for the firebase route.
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         UserDisplayBinding binding = UserDisplayBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new UserViewHolder(binding);
     }
 
+    //Activates a listener for when an item is clicked.
     public void setOnItemClickListener(OnItemClick onItemClick) {
         this.onItemClick = onItemClick;
     }
 
+
+    /**
+     * Load in the image and replace the placeholder image.
+     * 
+     * @param holder The ViewHolder for the view being bound.
+     * @param position The position of the item within the adapter's data set.
+     * @param model The model object containing the data that should be used to populate the view.
+     */
     @Override
     protected void onBindViewHolder(@NonNull UserViewHolder holder, int position, @NonNull Route model) {
         holder.binding.userDisplayUsername.setText(model.getTitle());
@@ -63,7 +74,7 @@ public class FirebaseRouteAdapter extends FirestorePagingAdapter<Route, Firebase
     }
 
 
-
+    //OnClickListener for each item
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot snapshot, int position);
     }

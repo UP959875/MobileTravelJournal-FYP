@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Fragment used to display the route details on the map. Used when looking at another users route.
 public class RouteMapsFragment extends BaseFragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;

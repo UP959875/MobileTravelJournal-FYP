@@ -20,7 +20,7 @@ import com.up959875.mobiletraveljournal.other.Privacy;
 
 import java.util.Objects;
 
-
+//Function to help display the user data from the Firebase Database.
 public class FirebaseUserAdapter extends FirestorePagingAdapter<User, FirebaseUserAdapter.UserViewHolder>{
 
     private OnItemClick onItemClick;
@@ -35,16 +35,24 @@ public class FirebaseUserAdapter extends FirestorePagingAdapter<User, FirebaseUs
 
 
     @NonNull
-
+    //Called to create a view for the firebase user.
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         UserDisplayBinding binding = UserDisplayBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new UserViewHolder(binding);
     }
 
+    //Activates a listener for when an item is clicked.
     public void setOnItemClickListener(OnItemClick onItemClick) {
         this.onItemClick = onItemClick;
     }
 
+    /**
+     * Load in the image and replace the placeholder image. Checks the privacy settings of the user before displaying the info
+     * 
+     * @param holder The ViewHolder for the view being bound.
+     * @param position The position of the item within the adapter's data set.
+     * @param model The model object containing the data that should be used to populate the view.
+     */
     @Override
     protected void onBindViewHolder(@NonNull UserViewHolder holder, int position, @NonNull User model) {
         holder.binding.userDisplayUsername.setText(model.getUsername());
@@ -63,7 +71,7 @@ public class FirebaseUserAdapter extends FirestorePagingAdapter<User, FirebaseUs
                 holder.binding.userDisplay));
         holder.binding.userItemDeleteButton.setVisibility(View.GONE);
     }
-
+    //OnClickListener for each item
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot snapshot, int position);
     }

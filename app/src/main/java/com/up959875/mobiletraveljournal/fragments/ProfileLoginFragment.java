@@ -40,6 +40,7 @@ import com.up959875.mobiletraveljournal.viewmodel.AuthViewModel;
 import java.util.Objects;
 import com.up959875.mobiletraveljournal.other.GoogleService;
 
+//Fragment used when the user is not signed in. The profile page is replaced by the login fragment, and allows the user to sign in with either Google or an email.
 public class ProfileLoginFragment extends BaseFragment implements View.OnClickListener{
 
     private TextInputEditText inputEmail;

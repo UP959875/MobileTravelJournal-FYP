@@ -9,6 +9,7 @@ import com.up959875.mobiletraveljournal.models.Notification;
 import com.up959875.mobiletraveljournal.models.User;
 import com.up959875.mobiletraveljournal.repository.NotificationRepo;
 
+//Has getters and setters for the data within the notification, and sends data to the notificationRepo to get info back.
 public class NotificationViewModel extends AndroidViewModel {
 
     private NotificationRepo notificationRepo;

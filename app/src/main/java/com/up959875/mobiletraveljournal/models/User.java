@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.up959875.mobiletraveljournal.R;
 import android.widget.ImageView;
 
+//User model class, contains all constructors and initialises variables for all the data.
+//Contains different constructors for different uses, and getters and setters for all variables.
 public class User extends BaseObservable implements Serializable {
     private String uid;
     private String username;
@@ -216,6 +218,7 @@ public class User extends BaseObservable implements Serializable {
     }
 
     @BindingAdapter("imageUrl")
+    // This is a method that is used to load an image into an image view.
     public static void loadImage(ImageView iv, String imgUrl){
         Glide.with(iv.getContext())
                 .load(imgUrl)

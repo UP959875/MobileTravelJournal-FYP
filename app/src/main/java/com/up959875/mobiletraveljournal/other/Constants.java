@@ -1,5 +1,6 @@
 package com.up959875.mobiletraveljournal.other;
 
+//Constants used for the database values
 public interface Constants {
 
     int RC_SIGN_IN = 2489;

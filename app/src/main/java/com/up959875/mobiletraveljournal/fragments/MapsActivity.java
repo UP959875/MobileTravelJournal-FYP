@@ -55,7 +55,7 @@ import androidx.core.content.ContextCompat;
 //import static com.up959875.mobiletraveljournal.fragments.RouteFragment.addresses;
 import static com.up959875.mobiletraveljournal.fragments.RouteFragment.savedLocations;
 
-
+//Activity used to open Google Maps and place down the markers from the automatic GPS tracking. Allows users to add a description to each marker before going to the submission page.
 public class MapsActivity extends BaseFragment implements OnMapReadyCallback, View.OnClickListener {
 
     private GoogleMap mMap;

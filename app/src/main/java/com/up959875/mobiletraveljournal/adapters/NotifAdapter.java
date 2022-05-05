@@ -16,17 +16,20 @@ import com.up959875.mobiletraveljournal.databinding.ListNotificationsBinding;
 import com.up959875.mobiletraveljournal.interfaces.OnItemClick;
 import com.up959875.mobiletraveljournal.models.Notification;
 
+//Notification adapter to display notifications
 public class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.NotifHolder> {
 
     private List<Notification> notifs;
     private OnItemClick onItemClick;
     private Context context;
 
+    //Constructor for the class
     public NotifAdapter(Context context, List<Notification> notifs) {
         this.context = context;
         this.notifs = notifs;
     }
 
+    //View created when class is called.
     @NonNull
     @Override
     public NotifHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,14 +38,17 @@ public class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.NotifHolder>
     }
 
 
+    //Get a specific item from the notifs
     private Notification getItem(int position) {
         return this.notifs.get(position);
     }
 
+    //OnClickListener for the items
     public void setOnItemClickListener(OnItemClick onItemClick) {
         this.onItemClick = onItemClick;
     }
 
+    //Binds the information to the layout file and replaces the placeholders.
     @Override
     public void onBindViewHolder(@NonNull NotifHolder holder, int position) {
         final Notification notification = notifs.get(position);
@@ -74,6 +80,7 @@ public class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.NotifHolder>
         }
     }
 
+    //Get the date and time for the notification.
     private String getTime(Date date) {
         Calendar currentDate = Calendar.getInstance();
         Calendar notificationDate = Calendar.getInstance();

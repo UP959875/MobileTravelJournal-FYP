@@ -14,11 +14,19 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+//Handles the address section of the database. gets the address through a snapshot and detects and address based on what is given.
 public class AddressRepo {
 
     private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
     private CollectionReference addressesRef = rootRef.collection(Constants.ADDRESSES);
 
+   /**
+    * It saves an address to the database
+    * 
+    * @param address The address object to be saved.
+    * @param reference The document reference of the address to be updated.
+    * @return A MutableLiveData object.
+    */
     public MutableLiveData<String> saveAddress(Address address, String reference) {
         MutableLiveData<String> statusData = new MutableLiveData<>();
 
@@ -36,6 +44,12 @@ public class AddressRepo {
         return statusData;
     }
 
+    /**
+     * It returns a MutableLiveData object that contains an Address object
+     * 
+     * @param reference The reference of the address document in the database.
+     * @return A MutableLiveData object that contains an Address object.
+     */
     public MutableLiveData<Address> getAddress(String reference) {
         MutableLiveData<Address> addressData = new MutableLiveData<>();
         DocumentReference addressRef = addressesRef.document(reference);
@@ -53,6 +67,14 @@ public class AddressRepo {
         return addressData;
     }
 
+    /**
+     * It takes a PlacesClient and a FindCurrentPlaceRequest as parameters, and returns a
+     * MutableLiveData of FindCurrentPlaceResponse
+     * 
+     * @param placesClient The PlacesClient object that you created in the previous step.
+     * @param request FindCurrentPlaceRequest
+     * @return A MutableLiveData object that contains a FindCurrentPlaceResponse object.
+     */
     public MutableLiveData<FindCurrentPlaceResponse> detectAddress(PlacesClient placesClient, FindCurrentPlaceRequest request) {
         MutableLiveData<FindCurrentPlaceResponse> detectedAddress = new MutableLiveData<>();
         Task<FindCurrentPlaceResponse> placeResponse = placesClient.findCurrentPlace(request);

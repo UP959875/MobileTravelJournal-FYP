@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.up959875.mobiletraveljournal.databinding.FragmentRouteListBinding;
 import com.up959875.mobiletraveljournal.base.BaseFragment;
 import com.up959875.mobiletraveljournal.R;
-
+//Fragment to display the list of markers made during tracking.
 public class RouteListFragment extends BaseFragment implements View.OnClickListener {
 
     private FragmentRouteListBinding binding;

@@ -14,6 +14,7 @@ import com.up959875.mobiletraveljournal.repository.AddressRepo;
 import com.up959875.mobiletraveljournal.repository.RouteRepo;
 
 
+//Has getters and setters for the data within the route, and sends data to the routeRepo to get info back.
 public class RouteViewModel extends AndroidViewModel {
 
     private RouteRepo routeRepo;

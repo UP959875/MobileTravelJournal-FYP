@@ -1,6 +1,8 @@
 package com.up959875.mobiletraveljournal.models;
 import com.up959875.mobiletraveljournal.other.Status;
 
+//DataWrapper to check if user is authenticated/verified, and handle if not.
+//Contains different constructors for different uses, and getters and setters for all variables.
 public class DataWrapper<T> {
     private T data;
     private Status error;
@@ -10,6 +12,9 @@ public class DataWrapper<T> {
     private boolean isVerified = false;
 
 
+    // This is a constructor for the DataWrapper class. It takes in the parameters data, error,
+    // message, isAuthenticated, isAdded, and isVerified. It then sets the class variables to the
+    // parameters.
     public DataWrapper(T data, Status error, String message, boolean isAuthenticated, boolean isAdded, boolean isVerified) {
         this.data = data;
         this.error = error;

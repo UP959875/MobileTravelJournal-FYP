@@ -12,24 +12,26 @@ import com.up959875.mobiletraveljournal.databinding.RouteExploreBinding;
 import com.up959875.mobiletraveljournal.models.Route;
 
 
+//Class for loading routes into the app
 public class RouteExploreAdapter extends LoopingPagerAdapter<Route> {
 
     private RouteExploreBinding binding;
     private List<Route> route;
 
-
+    //Constructor for the class.
     public RouteExploreAdapter(boolean isInfinite, List<Route> listRoute, Context context) {
         super(context, listRoute, isInfinite);
         route = listRoute;
     }
 
+    //Sets up the binding for the view.
     @Override
     protected View inflateView(int viewType, ViewGroup container, int listPosition) {
         binding = RouteExploreBinding.inflate(LayoutInflater.from(context), container, false);
         return binding.getRoot();
     }
 
-
+    //Get the amount of routes
     @Override
     public int getCount() {
         return route.size();

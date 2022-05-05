@@ -50,7 +50,7 @@ import com.up959875.mobiletraveljournal.models.Notification;
 import com.up959875.mobiletraveljournal.models.User;
 import com.up959875.mobiletraveljournal.viewmodel.UserViewModel;
 
-
+//ProfileFragment, related to displaying the user's profile when they are logged in. Will check authentication and location is valid, before loading other data such as friends.
 public class ProfileFragment extends BaseFragment implements View.OnClickListener {
 
     private FragmentProfileBinding binding;

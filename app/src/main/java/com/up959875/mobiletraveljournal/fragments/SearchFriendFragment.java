@@ -24,7 +24,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.up959875.mobiletraveljournal.other.SearchViewListener;
 import com.up959875.mobiletraveljournal.other.Constants;
-
+//SearchFriendFragment, used when the user wants to add a friend and searches in their username. Will look through the database for the name.
 public class SearchFriendFragment extends BaseFragment {
 
     private FragmentSearchFriendBinding binding;

@@ -35,7 +35,7 @@ import com.up959875.mobiletraveljournal.other.Constants;
 import com.up959875.mobiletraveljournal.other.GoogleService;
 import com.up959875.mobiletraveljournal.viewmodel.UserViewModel;
 
-
+//Used when the user needs to sign up to the app for the first time. Involves them entering their username and password
 public class SignUpFragment extends BaseFragment implements View.OnClickListener {
 
     private UserViewModel userViewModel;

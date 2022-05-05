@@ -8,6 +8,7 @@ import com.up959875.mobiletraveljournal.models.User;
 import com.up959875.mobiletraveljournal.repository.UserRepo;
 import java.util.Map;
 
+//Has getters and setters for the data within the user, and sends data to the userRepo to get info back.
 public class UserViewModel extends AndroidViewModel {
 
     private UserRepo userRepo;

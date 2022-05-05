@@ -66,6 +66,7 @@ import java.util.Objects;
 
 import id.zelory.compressor.Compressor;
 
+//Used when the user is finished tracking their route, and wants to submit the route to the database. Will let them add a picture, title and description before submission.
 public class RouteSubmitFragment extends BaseFragment implements View.OnClickListener {
 
 

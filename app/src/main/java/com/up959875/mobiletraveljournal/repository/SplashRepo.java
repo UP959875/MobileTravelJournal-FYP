@@ -12,6 +12,7 @@ import com.up959875.mobiletraveljournal.other.Constants;
 import com.up959875.mobiletraveljournal.other.Status;
 
 
+//Handles getting data on the splash screen, related to checking the user is authenticated and getting their data.
 public class SplashRepo {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -20,6 +21,11 @@ public class SplashRepo {
     private CollectionReference usersRef = rootRef.collection(Constants.USERS);
 
 
+   /**
+    * It checks if the user is authenticated and returns a MutableLiveData object with the user's data
+    * 
+    * @return A MutableLiveData object that contains a DataWrapper object that contains a User object.
+    */
     public MutableLiveData<DataWrapper<User>> checkUserIsAuth() {
         MutableLiveData<DataWrapper<User>> isUserAuthMutableLiveData = new MutableLiveData<>();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -34,6 +40,13 @@ public class SplashRepo {
     }
 
 
+    /**
+     * It gets a user from the database and returns a MutableLiveData object that contains a
+     * DataWrapper object that contains the user object and a status
+     * 
+     * @param uid The user's unique ID.
+     * @return A MutableLiveData object that contains a DataWrapper object that contains a User object.
+     */
     public MutableLiveData<DataWrapper<User>> getUserFromDatabase(String uid) {
         MutableLiveData<DataWrapper<User>> userMutableLiveData = new MutableLiveData<>();
         usersRef.document(uid).get().addOnCompleteListener(userTask -> {

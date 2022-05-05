@@ -16,6 +16,7 @@ import java.util.List;
 import androidx.lifecycle.MutableLiveData;
 
 
+//Handles the notification section of the database.
 public class NotificationRepo {
 
     //private FirebaseFirestore rootRef;
@@ -23,17 +24,27 @@ public class NotificationRepo {
     //private CollectionReference usersRef;
     private Context context;
 
+    //Constructor for the class
     private NotificationRepo() {
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         notificationsRef = rootRef.collection(Constants.NOTIFICATIONS);
         //usersRef = rootRef.collection(Constants.USERS);
     }
 
+    //Constructor for the class with context.
     public NotificationRepo(Context context) {
         this();
         this.context = context;
     }
 
+    /**
+     * It takes a list of notification ids, creates a list of tasks to get each notification, then
+     * creates a final task that waits for all the tasks to complete, and then returns a
+     * MutableLiveData object that contains the list of notifications
+     * 
+     * @param notificationsIds List of notification ids
+     * @return A MutableLiveData object that contains a list of Notification objects.
+     */
     public MutableLiveData<List<Notification>> getNotification(List<String> notificationsIds) {
         MutableLiveData<List<Notification>> notificationsListData = new MutableLiveData<>();
         List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
@@ -52,6 +63,12 @@ public class NotificationRepo {
         return notificationsListData;
     }
 
+    /**
+     * It returns a MutableLiveData object that contains a Notification object
+     * 
+     * @param id The id of the notification
+     * @return A MutableLiveData object that contains a Notification object.
+     */
     public MutableLiveData<Notification> getNotification(String id) {
         MutableLiveData<Notification> notificationData = new MutableLiveData<>();
         notificationsRef.document(id).get().addOnCompleteListener(task -> {
@@ -68,6 +85,12 @@ public class NotificationRepo {
         return notificationData;
     }
 
+    /**
+     * It removes a notification from the database
+     * 
+     * @param id The id of the notification to be removed
+     * @return A MutableLiveData object.
+     */
     public MutableLiveData<String> removeNotification(String id) {
         MutableLiveData<String> notificationResponse = new MutableLiveData<>();
         notificationsRef.document(id).delete().addOnCompleteListener(task -> {
@@ -80,6 +103,15 @@ public class NotificationRepo {
         return notificationResponse;
     }
 
+    /**
+     * I'm trying to create a notification object, and then add it to the database
+     * 
+     * @param from The user who sent the notification
+     * @param to The user to send the notification to
+     * @param type 1 = friend request, 2 = friend request accepted, 3 = friend request declined, 4 =
+     * friend request cancelled
+     * @return A MutableLiveData object.
+     */
     public MutableLiveData<String> sendNotification(User from, User to, Integer type) {
         MutableLiveData<String> notificationResponse = new MutableLiveData<>();
         Notification newNotification = new Notification(from.getUid(), to.getUid(), type);

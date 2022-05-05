@@ -67,7 +67,7 @@ import com.up959875.mobiletraveljournal.viewmodel.AddressViewModel;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import com.up959875.mobiletraveljournal.interfaces.BackPress;
 
-
+//Fragment for the user's profile settings page. Allows them to change the bio, location, privacy settings, as well as change account details (password, etc.)
 public class ProfileSettingsFragment extends BaseFragment implements View.OnClickListener, BackPress{
 
     private FragmentProfileSettingsBinding binding;

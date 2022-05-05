@@ -25,6 +25,7 @@ import java.util.HashMap;
 import com.up959875.mobiletraveljournal.databinding.FragmentFriendListBinding;
 import com.up959875.mobiletraveljournal.base.BaseFragment;
 
+//Fragment to handle the friend list, which is accessed from the users profile. They will get a list of their friends, which is retrieved from the database.
 public class FriendListFragment extends BaseFragment{
 
     private FragmentFriendListBinding binding;

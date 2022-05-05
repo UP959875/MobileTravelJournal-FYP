@@ -12,10 +12,12 @@ import com.up959875.mobiletraveljournal.R;
 import java.util.ArrayList;
 import java.util.List;
 
+//Function to display tags
 public class HashtagAdapter extends ArrayAdapter<String> {
 
     private List<String> hashtags;
 
+    //Constructor for the class
     public HashtagAdapter(@NonNull Context context, @NonNull List<String> tags) {
         super(context, 0, tags);
         hashtags = new ArrayList<>(tags);
@@ -23,6 +25,7 @@ public class HashtagAdapter extends ArrayAdapter<String> {
 
     @NonNull
     @Override
+    //Get the filter for the tags
     public Filter getFilter() {
         return hashtagFilter;
     }
@@ -30,6 +33,7 @@ public class HashtagAdapter extends ArrayAdapter<String> {
 
     @NonNull
     @Override
+    //Get the view for the tags, and find the textview associated with the list.
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         if (convertView == null) {
@@ -45,6 +49,7 @@ public class HashtagAdapter extends ArrayAdapter<String> {
     }
 
 
+    // This is the filter for the tags. It is filtering the tags based on the input from the user.
     private final Filter hashtagFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {

@@ -6,6 +6,8 @@ import androidx.databinding.library.baseAdapters.BR;
 import androidx.databinding.BaseObservable;
 import androidx.annotation.Nullable;
 
+//Marker model class, contains all constructors and initialises variables for all the data.
+//Contains different constructors for different uses, and getters and setters for all variables.
 public class Markers extends BaseObservable implements Serializable {
 
     private double latitude;
@@ -49,6 +51,13 @@ public class Markers extends BaseObservable implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    /**
+     * If the object is not null and the class is the same, then check if the description is not null
+     * and if it is equal to the description of the object, or if the description is null and the
+     * description of the object is null, and if the latitude and longitude are equal, then return true
+     * 
+     * @param obj The object to compare this instance with.
+     */
     @Override
     public boolean equals(@Nullable Object obj) {
         try {

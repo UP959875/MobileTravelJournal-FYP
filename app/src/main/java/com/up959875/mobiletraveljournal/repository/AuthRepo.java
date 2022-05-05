@@ -18,6 +18,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.up959875.mobiletraveljournal.other.Constants;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+//Handles authentication for email and Google. Deals with sign ups, verification, resetting passwords, and changing details.
 public class AuthRepo {
 
     private FirebaseAuth firebaseAuth;
@@ -29,6 +30,15 @@ public class AuthRepo {
     }
 
 
+   /**
+    * It creates a new user with the given email and password, and then updates the user's profile with
+    * the given username
+    * 
+    * @param email String
+    * @param password String
+    * @param username String
+    * @return A MutableLiveData object that contains a DataWrapper object that contains a User object.
+    */
     public MutableLiveData<DataWrapper<User>> signUpWithEmail(String email, String password, String username) {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(authTask -> {
@@ -49,6 +59,11 @@ public class AuthRepo {
         return userLiveData;
 }
 
+    /**
+     * It sends a verification email to the user's email address
+     * 
+     * @return A MutableLiveData object that contains a DataWrapper object.
+     */
     public MutableLiveData<DataWrapper<User>> sendVerificationMail() {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -69,6 +84,14 @@ public class AuthRepo {
         }
 
 
+    /**
+     * It takes a Google AuthCredential, signs in with it, and returns a MutableLiveData object that
+     * contains a DataWrapper object that contains a User object
+     * 
+     * @param googleAuthCredential The GoogleAuthCredential object that you get from the
+     * GoogleSignInAccount object.
+     * @return A MutableLiveData object that contains a DataWrapper object.
+     */
     public MutableLiveData<DataWrapper<User>> signInWithGoogle(AuthCredential googleAuthCredential) {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         firebaseAuth.signInWithCredential(googleAuthCredential).addOnCompleteListener(authTask -> {
@@ -104,6 +127,12 @@ public class AuthRepo {
     }
 
 
+   /**
+    * It checks if a user exists in the database, if not, it adds the user to the database
+    * 
+    * @param user DataWrapper<User>
+    * @return A LiveData object that contains a DataWrapper object that contains a User object.
+    */
     public LiveData<DataWrapper<User>> addUserToDatabase(DataWrapper<User> user) {
         MutableLiveData<DataWrapper<User>> newUserLiveData = new MutableLiveData<>();
         DocumentReference uidRef = usersRef.document(user.getData().getUid());
@@ -130,6 +159,14 @@ public class AuthRepo {
         return newUserLiveData;
     }
 
+    /**
+     * It takes in an email and password, and returns a LiveData object that contains a DataWrapper
+     * object that contains a User object
+     * 
+     * @param email The email address of the user.
+     * @param password The password for the email address.
+     * @return A LiveData object that contains a DataWrapper object.
+     */
     public LiveData<DataWrapper<User>> logInWithEmail(String email, String password) {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(authTask -> {
@@ -153,6 +190,27 @@ public class AuthRepo {
     }
 
 
+    /**
+     * "This function sends a password reset email to the user, and returns a LiveData object that
+     * contains the status of the operation."
+     * 
+     * The function takes in a string, which is the user's email address. It then creates a
+     * MutableLiveData object, which is a LiveData object that can be modified. 
+     * 
+     * The function then calls the sendPasswordResetEmail() function from the FirebaseAuth class. This
+     * function takes in the user's email address, and sends a password reset email to the user. 
+     * 
+     * The function then adds an OnCompleteListener to the task returned by the
+     * sendPasswordResetEmail() function. This listener is called when the task is completed. 
+     * 
+     * If the task is successful, the function sets the value of the MutableLiveData object to a
+     * DataWrapper object that contains a null User object, a Status.SUCCESS status, and a message. 
+     * 
+     * If the task is not successful, the error is given to the user.
+     * 
+     * @param email The email address of the user.
+     * @return A LiveData object that contains a DataWrapper object.
+     */
     public LiveData<DataWrapper<User>> sendPasswordResetEmail(String email) {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
@@ -166,6 +224,13 @@ public class AuthRepo {
         return userLiveData;
     }
 
+    /**
+     * This function gets a user from the database and returns a LiveData object that contains the user
+     * data
+     * 
+     * @param uid The user's unique ID
+     * @return A LiveData object that contains a DataWrapper object that contains a User object.
+     */
     public LiveData<DataWrapper<User>> getUser(String uid) {
         MutableLiveData<DataWrapper<User>> userLiveData = new MutableLiveData<>();
         DocumentReference userReference = usersRef.document(uid);
@@ -187,6 +252,13 @@ public class AuthRepo {
         return userLiveData;
     }
 
+    /**
+     * This function takes a new username as a parameter and updates the user's display name in the
+     * Firebase Authentication database
+     * 
+     * @param newUsername The new username that the user wants to change to.
+     * @return A LiveData object that contains a String.
+     */
     public LiveData<String> changeUsername(String newUsername) {
         MutableLiveData<String> status = new MutableLiveData<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -199,6 +271,14 @@ public class AuthRepo {
         return status;
     }
 
+    /**
+     * It takes the current password and the new email as parameters, and returns a LiveData object
+     * that contains the status of the operation. If successful, the password will be changed at the end.
+     * 
+     * @param currentPassword The user's current password.
+     * @param newEmail The new email address you want to update to.
+     * @return A LiveData object that contains a String.
+     */
     public LiveData<String> changeEmail(String currentPassword, String newEmail) {
         MutableLiveData<String> status = new MutableLiveData<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -221,6 +301,14 @@ public class AuthRepo {
         return status;
     }
 
+    /**
+     * It takes the current password and the new password as parameters, and returns a LiveData object
+     * that contains the status of the operation
+     * 
+     * @param currentPassword The user's current password.
+     * @param newPassword The new password for the user.
+     * @return A LiveData object that contains a String.
+     */
     public LiveData<String> changePassword(String currentPassword, String newPassword) {
         MutableLiveData<String> status = new MutableLiveData<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -244,6 +332,13 @@ public class AuthRepo {
     }
 
 
+    /**
+     * If the task is successful, then set the userLiveData to the user object, otherwise set the
+     * userLiveData to an error message
+     * 
+     * @param authTask The Task object returned from the FirebaseAuth.signInWithCredential() method.
+     * @param userLiveData This is the MutableLiveData object that will be updated with the user data.
+     */
     private void handleUserDataErrors(Task authTask, MutableLiveData<DataWrapper<User>> userLiveData) {
         if (authTask.getException() != null) {
             try {

@@ -37,7 +37,7 @@ import com.up959875.mobiletraveljournal.R;
 import com.up959875.mobiletraveljournal.databinding.FragmentRouteBinding;
 import java.util.List;
 
-
+//Fragment for the route tracking feature. Has multiple switches, and allows the user to toggle automatic tracking on and off. Can view the list of markers, or go to the map from there.
 public class RouteFragment extends BaseFragment implements View.OnClickListener {
 
     public static final int DEFAULT_UPDATE_INTERVAL = 5;

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.up959875.mobiletraveljournal.repository.StorageRepo;
 import android.app.Application;
 
+//Has getters and setters for the data within the storage, and sends data to the storageRepo to get info back.
 public class StorageViewModel extends AndroidViewModel {
 
     private StorageRepo storageRepo;

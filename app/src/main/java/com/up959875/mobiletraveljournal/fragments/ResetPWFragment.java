@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.up959875.mobiletraveljournal.other.Status;
 import com.up959875.mobiletraveljournal.viewmodel.AuthViewModel;
 import java.util.Objects;
-
+//Fragment used to reset the password from the settings page. Will send an email to the user asking them to change their password.
 public class ResetPWFragment extends BaseFragment implements View.OnClickListener {
 
     private FragmentResetPwBinding binding;

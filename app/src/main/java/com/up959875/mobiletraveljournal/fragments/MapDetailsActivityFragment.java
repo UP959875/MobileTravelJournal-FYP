@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.up959875.mobiletraveljournal.R;
 
+//Fragment for the map display, to append 'title' and 'address' to the marker.
 public class MapDetailsActivityFragment extends AppCompatActivity {
 
     TextView markerText;

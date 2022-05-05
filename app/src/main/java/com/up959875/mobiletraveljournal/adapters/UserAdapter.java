@@ -13,7 +13,7 @@ import com.up959875.mobiletraveljournal.databinding.UserDisplayBinding;
 import com.up959875.mobiletraveljournal.interfaces.OnItemClick;
 import com.up959875.mobiletraveljournal.other.Privacy;
 import com.up959875.mobiletraveljournal.models.User;
-
+//User adapter to load local data into view
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
 
 
@@ -22,6 +22,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
     private boolean isUserProfile;
     private Context context;
 
+    //Constructor for the class
     public UserAdapter(Context context, List<User> users, boolean isUserProfile) {
         this.context = context;
         this.users = users;
@@ -39,6 +40,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         return new UserHolder(binding);
     }
 
+    //Replace placeholder info with the user details.
     @Override
     public void onBindViewHolder(@NonNull UserHolder holder, int position) {
         final User user = users.get(position);
@@ -70,6 +72,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         notifyDataSetChanged();
     }
 
+    //OnClickListener for items
     public void setOnItemClickListener(OnItemClick onItemClick2) {
         this.onItemClick = onItemClick2;
     }

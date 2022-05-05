@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Route model class, contains all constructors and initialises variables for all the data.
+//Contains different constructors for different uses, and getters and setters for all variables.
 public class Route extends BaseObservable implements Serializable {
 
     public String id;

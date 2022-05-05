@@ -10,7 +10,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.up959875.mobiletraveljournal.models.Address;
 import com.up959875.mobiletraveljournal.repository.AddressRepo;
 import com.up959875.mobiletraveljournal.repository.StorageRepo;
-
+//Has getters and setters for the data within the address, and sends data to the AddressRepo to get info back.
 public class AddressViewModel extends AndroidViewModel {
 
 

@@ -53,6 +53,7 @@ import com.up959875.mobiletraveljournal.databinding.FragmentExploreMapBinding;
 import com.google.android.material.textfield.TextInputEditText;
 import com.up959875.mobiletraveljournal.adapters.MarkerDescAdapter;
 
+//Fragment used to handle the personal map, which is accessed from the front page. Allows users to add markers with a description. The user can click on the map, or search in a location.
 public class ExploreMapFragment extends BaseFragment implements View.OnClickListener, OnMapReadyCallback {
 
     private LatLng currentPlace;

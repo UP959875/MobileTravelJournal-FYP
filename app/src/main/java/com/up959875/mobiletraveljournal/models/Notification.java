@@ -9,6 +9,8 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.ServerTimestamp;
 import java.io.Serializable;
 
+//Notification model class, contains all constructors and initialises variables for all the data.
+//Contains different constructors for different uses, and getters and setters for all variables.
 public class Notification extends BaseObservable implements Serializable {
 
     private String id;
@@ -39,6 +41,13 @@ public class Notification extends BaseObservable implements Serializable {
         //notifyPropertyChanged(BR.id);
     }
 
+    /**
+     * If the object is not null and is of the same class as the current object, then check if the id,
+     * idFrom, idTo, type, and timestamp are equal
+     * 
+     * @param obj The object to compare with
+     * @return The hashcode of the object.
+     */
     @Override
     public boolean equals(@Nullable Object obj) {
         try {

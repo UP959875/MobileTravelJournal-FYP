@@ -14,6 +14,7 @@ import com.up959875.mobiletraveljournal.R;
 import com.up959875.mobiletraveljournal.other.Constants;
 
 
+//Class to deal with Google sign-ins and sign-ups.
 public class GoogleService {
 
     private GoogleSignInClient googleSignInClient;
@@ -30,6 +31,7 @@ public class GoogleService {
     }
 
 
+    //Initialises the app to sign in, and uses the ID to get authentication from Google login services.
     public void initGoogleSignInClient(Context context) {
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -40,6 +42,7 @@ public class GoogleService {
     }
 
 
+    //Takes the account used when signed in, and checks the data, and if it can be used to sign in.
     public String getGoogleSignInAccount(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);

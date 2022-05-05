@@ -27,6 +27,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.up959875.mobiletraveljournal.other.SearchViewListener;
 import com.up959875.mobiletraveljournal.other.Constants;
 
+//SearchRouteFragment, used when the user wants to find a route and searches in the name. Will look through the database for the name.
 public class SearchRouteFragment extends BaseFragment {
 
     private FragmentSearchRouteBinding binding;

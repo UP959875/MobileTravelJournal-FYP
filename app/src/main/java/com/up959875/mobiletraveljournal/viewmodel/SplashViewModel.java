@@ -8,6 +8,7 @@ import com.up959875.mobiletraveljournal.models.DataWrapper;
 import com.up959875.mobiletraveljournal.models.User;
 import com.up959875.mobiletraveljournal.repository.SplashRepo;
 
+//Has getters and setters for the data within the splash model, and sends data to the splashRepo to get info back.
 public class SplashViewModel extends AndroidViewModel {
 
     private SplashRepo splashRepo;
